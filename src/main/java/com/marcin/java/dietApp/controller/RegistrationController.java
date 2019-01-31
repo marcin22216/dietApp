@@ -1,15 +1,17 @@
 package com.marcin.java.dietApp.controller;
 
 import com.marcin.java.dietApp.bean.User;
+import com.marcin.java.dietApp.comonent.DataBase;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.jws.soap.SOAPBinding;
-
 @Controller
 public class RegistrationController {
+    @Autowired
+    private DataBase dataBase;
 
     @GetMapping("/registration")
     public String registration(Model model)
@@ -22,6 +24,8 @@ public class RegistrationController {
     @PostMapping("/register")
     public String register(User userToRegister)
     {
+
+        this.dataBase.getUserList().add(userToRegister);
 
         return "index";
     }
