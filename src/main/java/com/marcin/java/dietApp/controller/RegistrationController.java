@@ -24,9 +24,11 @@ public class RegistrationController {
     @PostMapping("/register")
     public String register(User userToRegister)
     {
-
         this.dataBase.getUserList().add(userToRegister);
-
+        if (userToRegister.getLogin().length()<4)
+        {
+            return "registration/loginError";
+        }
         return "index";
     }
 
