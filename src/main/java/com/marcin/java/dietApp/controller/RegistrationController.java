@@ -24,7 +24,7 @@ public class RegistrationController {
     @PostMapping("/register")
     public String register(User userToRegister)
     {
-        if (userToRegister.getLogin().length()<4)
+        if (userToRegister.getLogin().length()<4 & userToRegister.getLogin().length()>10)
         {
             return "registration/loginError";
         }
