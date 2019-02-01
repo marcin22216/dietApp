@@ -2,6 +2,7 @@ package com.marcin.java.dietApp.controller;
 
 import com.marcin.java.dietApp.bean.User;
 import com.marcin.java.dietApp.comonent.CheckLogin;
+import com.marcin.java.dietApp.comonent.CheckPassword;
 import com.marcin.java.dietApp.comonent.DataBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,8 @@ public class RegistrationController {
     private DataBase dataBase;
     @Autowired
     private CheckLogin checkLogin;
+    @Autowired
+    private CheckPassword checkPassword;
 
     @GetMapping("/registration")
     public String registration(Model model)
@@ -28,6 +31,10 @@ public class RegistrationController {
     public String register(User userToRegister,CheckLogin checkLogin)
     {
         if (checkLogin.checkName(userToRegister) == false)
+        {
+            return "registration/loginError";
+        }
+        else if (checkPassword.checkPass(userToRegister) == false)
         {
             return "registration/loginError";
         }
