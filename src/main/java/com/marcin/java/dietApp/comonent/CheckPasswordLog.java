@@ -21,4 +21,5 @@ public class CheckPasswordLog {
         }
         return true;
     }
+
 }
