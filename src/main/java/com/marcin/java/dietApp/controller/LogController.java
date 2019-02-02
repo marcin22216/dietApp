@@ -1,6 +1,8 @@
 package com.marcin.java.dietApp.controller;
 
 import com.marcin.java.dietApp.bean.User;
+import com.marcin.java.dietApp.comonent.CheckLoginLog;
+import com.marcin.java.dietApp.comonent.CheckPasswordLog;
 import com.marcin.java.dietApp.comonent.DataBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,10 @@ public class LogController {
 
     @Autowired
     private DataBase dataBase;
+    @Autowired
+    private CheckLoginLog checkLoginLog;
+    @Autowired
+    private CheckPasswordLog checkPasswordLog;
 
     @GetMapping("/login")
     public String login(Model model)
@@ -23,26 +29,16 @@ public class LogController {
     @PostMapping("/signed")
     public String signed(User userToLog)
     {
-        for (int i=0; i <= dataBase.getUserList().size(); i++)
+        if (checkLoginLog.correctLog(dataBase, userToLog)==true)
         {
-            if (dataBase.getUserList().get(i).getLogin().equals(userToLog.getLogin()))
+            if (checkPasswordLog.correctPassword(dataBase, userToLog)==true)
             {
-                for (int j=0; i<= dataBase.getUserList().size(); j++)
-                {
-                    if (dataBase.getUserList().get(j).getPassword().equals(userToLog.getPassword()))
-                    {
-                        return "login/userMain";
-                    }
-                    else
-                        return "login/signErrorPass";
-                }
+                return "login/userMain";
             }
-            else
-            {
-                return "login/signErrorLog";
-            }
+            else return "login/signErrorPass";
         }
-        return "login/loginPage";
+        else return "login/signErrorLog";
+
     }
 
 }
