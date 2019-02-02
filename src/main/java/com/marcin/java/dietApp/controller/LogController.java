@@ -1,5 +1,6 @@
 package com.marcin.java.dietApp.controller;
 
+import com.marcin.java.dietApp.bean.User;
 import com.marcin.java.dietApp.comonent.DataBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +16,7 @@ public class LogController {
     @GetMapping("/login")
     public String login(Model model)
     {
-        model.addAttribute()
+        model.addAttribute("user", new User());
         return "login/loginPage";
     }
 
