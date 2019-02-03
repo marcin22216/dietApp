@@ -8,9 +8,9 @@ public class CheckPasswordLog {
 
     public boolean correctPassword(DataBase userList, User userToPass)
     {
-        for (int i=0; i<=userList.getUserList().size(); i++)
+        for (User userX : userList.getUserList())
         {
-            if (userList.getUserList().get(i).getPassword().equals(userToPass.getPassword()))
+            if (userX.getPassword().equals(userToPass.getPassword()))
             {
                 return true;
             }

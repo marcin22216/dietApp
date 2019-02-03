@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 public class CheckLoginLog {
     public boolean correctLog(DataBase userList, User userToLog)
     {
-        for (int i=0; i<=userList.getUserList().size(); i++)
+        for (User userX : userList.getUserList())
         {
-            if (userList.getUserList().get(i).getLogin().equals(userToLog.getLogin()))
+            if (userX.getLogin().equals(userToLog.getLogin()))
             {
                 return true;
             }
@@ -17,6 +17,5 @@ public class CheckLoginLog {
                 return false;
         }
         return true;
-
     }
 }
