@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class CheckPasswordLog {
 
-    public boolean correctPassword(DataBase dataBase, User userToPass)
+    public boolean correctPassword(DataBase userList, User userToPass)
     {
-        for (int i=0; i<=dataBase.getUserList().size(); i++)
+        for (int i=0; i<=userList.getUserList().size(); i++)
         {
-            if (dataBase.getUserList().get(i).equals(userToPass.getPassword()))
+            if (userList.getUserList().get(i).getPassword().equals(userToPass.getPassword()))
             {
                 return true;
             }

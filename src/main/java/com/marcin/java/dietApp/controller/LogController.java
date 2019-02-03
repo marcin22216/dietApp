@@ -29,9 +29,9 @@ public class LogController {
     @PostMapping("/signed")
     public String signed(User userToLog)
     {
-        if (checkLoginLog.correctLog(dataBase, userToLog)==true)
+        if (this.checkLoginLog.correctLog(dataBase, userToLog)==true)
         {
-            if (checkPasswordLog.correctPassword(dataBase, userToLog)==true)
+            if (this.checkPasswordLog.correctPassword(dataBase, userToLog)==true)
             {
                 return "login/userMain";
             }
