@@ -40,7 +40,7 @@ public class RegistrationController {
         }
         else
             this.dataBase.getUserList().add(userToRegister);
-        return "index";
+         return "index";
     }
 
 }
