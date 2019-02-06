@@ -6,6 +6,7 @@ public class User {
     private String password;
     private String name;
     private String surname;
+    private boolean isLogged;
 
 
     public String getPassword() {
@@ -38,5 +39,14 @@ public class User {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+
+    public boolean isLogged() {
+        return isLogged;
+    }
+
+    public void setLogged(boolean logged) {
+        isLogged = logged;
     }
 }

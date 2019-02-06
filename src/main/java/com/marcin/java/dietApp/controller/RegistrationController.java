@@ -28,7 +28,7 @@ public class RegistrationController {
     }
 
     @PostMapping("/register")
-    public String register(User userToRegister,CheckLogin checkLogin)
+    public String register(User userToRegister)
     {
         if (checkLogin.checkName(userToRegister) == false)
         {

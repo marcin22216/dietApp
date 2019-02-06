@@ -16,6 +16,6 @@ public class CheckLoginLog {
             else
                 return false;
         }
-        return true;
+        return false;
     }
 }

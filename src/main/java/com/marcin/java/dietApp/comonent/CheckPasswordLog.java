@@ -12,6 +12,7 @@ public class CheckPasswordLog {
         {
             if (userX.getPassword().equals(userToPass.getPassword()))
             {
+                userX.setLogged(true);
                 return true;
             }
             else
@@ -19,7 +20,7 @@ public class CheckPasswordLog {
                 return false;
             }
         }
-        return true;
+        return false;
     }
 
 }
