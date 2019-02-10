@@ -30,11 +30,11 @@ public class RegistrationController {
     @PostMapping("/register")
     public String register(User userToRegister)
     {
-        if (checkLogin.checkName(userToRegister) == false)
+        if (!checkLogin.checkName(userToRegister))
         {
             return "registration/loginError";
         }
-        else if (checkPassword.checkPass(userToRegister) == false)
+        else if (!checkPassword.checkPass(userToRegister))
         {
             return "registration/loginError";
         }

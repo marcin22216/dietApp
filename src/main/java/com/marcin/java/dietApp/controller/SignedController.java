@@ -23,13 +23,20 @@ public class SignedController {
     @PostMapping("/adding")
     public String adding(User userPersonal)
     {
-        for (int i=0; i<=dataBase.getUserList().size(); i++)
+        for (int i=0; i<dataBase.getUserList().size(); i++)
         {
-            if (dataBase.getUserList().get(i).isLogged() == true)
+            if (dataBase.getUserList().get(i).isLogged())
             {
-
+                dataBase.getUserList().get(i).setName(userPersonal.getName());
+                dataBase.getUserList().get(i).setSurname(userPersonal.getSurname());
             }
         }
         return "personalData/confirmAdd";
+    }
+
+    @GetMapping("/signed")
+    public String dupa()
+    {
+        return "login/userMain";
     }
 }
