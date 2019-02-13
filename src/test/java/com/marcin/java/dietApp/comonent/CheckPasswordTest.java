@@ -15,11 +15,14 @@ public class CheckPasswordTest {
     @Test
     public void shouldReturnFalseBecauseTooShortOfLongPassword()
     {
+        //gven
         User userToTest = new User();
         userToTest.setPassword("ww");
 
+        //when
         boolean result = underTest.checkPass(userToTest);
 
+        //then
         Assertions.assertThat(result).isEqualTo(false);
     }
 
