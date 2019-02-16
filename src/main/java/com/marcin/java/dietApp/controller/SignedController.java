@@ -4,6 +4,7 @@ import com.marcin.java.dietApp.bean.User;
 import com.marcin.java.dietApp.comonent.AddName;
 import com.marcin.java.dietApp.comonent.AddSurname;
 import com.marcin.java.dietApp.comonent.DataBase;
+import com.marcin.java.dietApp.comonent.LogOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,8 @@ public class SignedController {
     private AddName addName;
     @Autowired
     private AddSurname addSurname;
+    @Autowired
+    private LogOut logOut;
 
     @GetMapping("/addUserData")
     public String addUserData(Model model)
@@ -28,7 +31,7 @@ public class SignedController {
     }
 
     @PostMapping("/adding")
-    public String adding(Model model, @ModelAttribute(name = "name") User userPersonal)
+    public String adding(Model model, User userPersonal)
     {
         addName.addName(dataBase, userPersonal);
         addSurname.addSurname(dataBase, userPersonal);
@@ -52,13 +55,7 @@ public class SignedController {
     @GetMapping("/logout")
     public String logout()
     {
-        for (int i=0; i<dataBase.getUserList().size(); i++)
-        {
-            if (dataBase.getUserList().get(i).isLogged())
-            {
-                dataBase.getUserList().get(i).setLogged(false);
-            }
-        }
+        logOut.logout(dataBase);
         return "/index";
     }
 }
