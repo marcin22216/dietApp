@@ -1,6 +1,8 @@
 package com.marcin.java.dietApp.controller;
 
 import com.marcin.java.dietApp.bean.User;
+import com.marcin.java.dietApp.comonent.AddName;
+import com.marcin.java.dietApp.comonent.AddSurname;
 import com.marcin.java.dietApp.comonent.DataBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class SignedController {
     @Autowired
     private DataBase dataBase;
+    @Autowired
+    private AddName addName;
+    @Autowired
+    private AddSurname addSurname;
 
     @GetMapping("/addUserData")
     public String addUserData(Model model)
@@ -24,14 +30,9 @@ public class SignedController {
     @PostMapping("/adding")
     public String adding(Model model, @ModelAttribute(name = "name") User userPersonal)
     {
-        for (int i=0; i<dataBase.getUserList().size(); i++)
-        {
-            if (dataBase.getUserList().get(i).isLogged())
-            {
-                dataBase.getUserList().get(i).setName(userPersonal.getName());
-                dataBase.getUserList().get(i).setSurname(userPersonal.getSurname());
-            }
-        }
+        addName.addName(dataBase, userPersonal);
+        addSurname.addSurname(dataBase, userPersonal);
+
         for (int i=0; i<dataBase.getUserList().size(); i++)
         {
             String name = dataBase.getUserList().get(i).getName();
