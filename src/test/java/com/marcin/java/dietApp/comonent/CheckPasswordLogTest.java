@@ -40,6 +40,26 @@ public class CheckPasswordLogTest {
         Assertions.assertThat(result).isEqualTo(true);
     }
 
+    @Test
+    public void shouldReturnFalseIfPasswordIsIncorrect()
+    {
+        //given
+        User userToTest = new User();
+        User userToTest2 = new User();
+        List<User> dataBase;
+        dataBase = new ArrayList<>();
+        DataBase userListInDataBase = new DataBase();
+        userListInDataBase.setUserList(dataBase);
+        dataBase.add(userToTest);
+        userToTest.setPassword("dupa");
+        userToTest2.setPassword("dupa");
 
+        //when
+        boolean result = underTest.correctPassword(userListInDataBase, userToTest2);
+
+        //then
+        Assertions.assertThat(result).isEqualTo(false);
+
+    }
 
 }

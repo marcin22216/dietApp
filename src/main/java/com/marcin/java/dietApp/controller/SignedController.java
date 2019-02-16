@@ -39,4 +39,17 @@ public class SignedController {
     {
         return "login/userMain";
     }
+
+    @GetMapping("/logout")
+    public String logout()
+    {
+        for (int i=0; i<dataBase.getUserList().size(); i++)
+        {
+            if (dataBase.getUserList().get(i).isLogged())
+            {
+                dataBase.getUserList().get(i).setLogged(false);
+            }
+        }
+        return "/index";
+    }
 }
