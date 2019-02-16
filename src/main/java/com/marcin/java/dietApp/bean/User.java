@@ -7,6 +7,9 @@ public class User {
     private String name;
     private String surname;
     private boolean isLogged;
+    private double weight;
+    private double growth;
+    private double bmi;
 
 
     public String getPassword() {
@@ -41,12 +44,35 @@ public class User {
         this.surname = surname;
     }
 
-
     public boolean isLogged() {
         return isLogged;
     }
 
     public void setLogged(boolean logged) {
         isLogged = logged;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public double getGrowth() {
+        return growth;
+    }
+
+    public void setGrowth(double growth) {
+        this.growth = growth;
+    }
+
+    public double getBmi() {
+        return bmi;
+    }
+
+    public void setBmi(double bmi) {
+        this.bmi = bmi;
     }
 }
