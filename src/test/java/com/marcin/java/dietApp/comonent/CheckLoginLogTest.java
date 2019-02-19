@@ -15,6 +15,8 @@ public class CheckLoginLogTest {
     @Before
     public void setUp() { this.underTest = new CheckLoginLog(); }
 
+    //TODO: check if method's name is correct
+    //TODO: this test does not pass !!!!!
     @Test
     public void shouldRetornTruIfLoginIsCorrect()
     {
@@ -35,5 +37,31 @@ public class CheckLoginLogTest {
         //then
         Assertions.assertThat(result).isEqualTo(true);
     }
+
+    // after my corrections
+//    @Test
+//    public void shouldReturnTruIfLoginIsCorrect()
+//    {
+//        given
+//        User registeredUser = new User();
+//        registeredUser.setLogin("marcin");
+//
+//        List<User> listOfUsers = new ArrayList<>();
+//        listOfUsers.add(registeredUser);
+//
+//        DataBase dataBase = new DataBase();
+//        dataBase.setUserList(listOfUsers);
+//
+//        User userToLog = new User();
+//        userToLog.setLogin("marcin");
+//
+//        when
+//        boolean result = underTest.correctLog(dataBase, userToLog);
+//
+//        then
+//        Assertions.assertThat(result).isEqualTo(true);
+//    }
+
+    //TODO: add test! Check what happen when login is incorrect and other scenario
 
 }
