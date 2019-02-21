@@ -10,6 +10,7 @@ public class User {
     private double weight;
     private double growth;
     private double bmi;
+    private String sex;
 
 
     public String getPassword() {
@@ -74,5 +75,13 @@ public class User {
 
     public void setBmi(double bmi) {
         this.bmi = bmi;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 }

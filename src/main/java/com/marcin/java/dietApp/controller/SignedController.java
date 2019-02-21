@@ -1,10 +1,8 @@
 package com.marcin.java.dietApp.controller;
 
 import com.marcin.java.dietApp.bean.User;
-import com.marcin.java.dietApp.comonent.AddName;
-import com.marcin.java.dietApp.comonent.AddSurname;
-import com.marcin.java.dietApp.comonent.DataBase;
-import com.marcin.java.dietApp.comonent.LogOut;
+import com.marcin.java.dietApp.comonent.*;
+import com.sun.beans.finder.FieldFinder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +20,8 @@ public class SignedController {
     private AddSurname addSurname;
     @Autowired
     private LogOut logOut;
+    @Autowired
+    private FindOnlineUser findOnlineUser;
 
     @GetMapping("/addUserData")
     public String addUserData(Model model)
@@ -36,13 +36,11 @@ public class SignedController {
         addName.addName(dataBase, userPersonal);
         addSurname.addSurname(dataBase, userPersonal);
 
-        for (int i=0; i<dataBase.getUserList().size(); i++)
-        {
-            String name = dataBase.getUserList().get(i).getName();
+        findOnlineUser.findUser(dataBase, userPersonal);
+            String name = userPersonal.getName();
             model.addAttribute("name", name);
-            String surname = dataBase.getUserList().get(i).getSurname();
+            String surname = userPersonal.getSurname();
             model.addAttribute("surname", surname);
-        }
         return "personalData/confirmAdd";
     }
 
@@ -58,4 +56,5 @@ public class SignedController {
         logOut.logout(dataBase);
         return "/index";
     }
+
 }
