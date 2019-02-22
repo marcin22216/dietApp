@@ -29,7 +29,7 @@ public class BmiController {
     @PostMapping("/calculating")
     public String calculating(Model model, User userSize)
     {
-        findOnlineUser.findUser(dataBase, userSize);
+        findOnlineUser.findUser(dataBase);
         double bmi = calculator.calculateBMI(userSize);
         model.addAttribute("bmi", bmi);
 

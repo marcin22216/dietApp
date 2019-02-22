@@ -36,7 +36,7 @@ public class SignedController {
         addName.addName(dataBase, userPersonal);
         addSurname.addSurname(dataBase, userPersonal);
 
-        findOnlineUser.findUser(dataBase, userPersonal);
+        findOnlineUser.findUser(dataBase);
             String name = userPersonal.getName();
             model.addAttribute("name", name);
             String surname = userPersonal.getSurname();

@@ -34,7 +34,7 @@ public class FindOnlineUserTest {
         dataBaseTest.setUserList(listToTest);
 
         //when
-        User result = underTest.findUser(dataBaseTest, userToTest);
+        User result = underTest.findUser(dataBaseTest);
 
         //then
         Assertions.assertThat(result).isEqualTo(userToTest);
@@ -52,7 +52,7 @@ public class FindOnlineUserTest {
         dataBaseTest.setUserList(listToTest);
 
         //when
-        User result = underTest.findUser(dataBaseTest, userToTest);
+        User result = underTest.findUser(dataBaseTest);
 
         //then
         Assertions.assertThat(result).isEqualTo(null);

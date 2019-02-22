@@ -28,8 +28,10 @@ public class AddSexController {
     @PostMapping("/sexAdding")
     public String sexAdding(Model model, User userSex)
     {
-        findOnlineUser.findUser(dataBase, userSex);
-        userSex.setSex(userSex.getSex());
+        User loggedUser = findOnlineUser.findUser(dataBase);
+
+        loggedUser.setSex(userSex.getSex());
+
         String sex = userSex.getSex();
         model.addAttribute("sex", sex);
         return "personalData/confirmAdd";
