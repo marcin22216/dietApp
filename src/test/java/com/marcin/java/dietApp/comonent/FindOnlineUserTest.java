@@ -20,7 +20,7 @@ public class FindOnlineUserTest {
     }
 
     @Test
-    public void shouldReturnUserWhenisLog() {
+    public void shouldReturnUserWhenIsLog() {
         //given
         List<User> listToTest;
         listToTest = new ArrayList<>();
