@@ -6,17 +6,26 @@ import org.springframework.stereotype.Component;
 @Component
 public class CheckLogin {
 
-    private int name;
+    private String login;
+    private int lenghtName;
 
-    public boolean checkName(User userToRegister)
+    public boolean checkName(DataBase dataBase, User userToRegister)
     {
-        name = userToRegister.getLogin().length();
-        if (name<4 || name >10)
+        login = userToRegister.getLogin();
+        lenghtName = userToRegister.getLogin().length();
+        if (lenghtName<4 || lenghtName >10)
         {
             return false;
         }
-        else
+
+        for (User user : dataBase.getUserList()) {
+            if (userToRegister.getLogin().equals(user.getLogin()));
+            {
+                return false;
+            }
+        }
             return true;
+
     }
 
 }

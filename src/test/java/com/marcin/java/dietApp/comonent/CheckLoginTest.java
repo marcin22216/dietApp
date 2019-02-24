@@ -25,9 +25,10 @@ public class CheckLoginTest {
         // given
         User userToTest = new User();
         userToTest.setLogin("dupadupaduapdu");
+        DataBase dataBase = new DataBase();
 
         // when
-        boolean result = underTest.checkName(userToTest);
+        boolean result = underTest.checkName(dataBase, userToTest);
 
         // then
         Assertions.assertThat(result).isFalse();
@@ -40,9 +41,10 @@ public class CheckLoginTest {
         // given
         User userToTest = new User();
         userToTest.setLogin("a");
+        DataBase dataBase = new DataBase();
 
         // when
-        boolean result = underTest.checkName(userToTest);
+        boolean result = underTest.checkName(dataBase, userToTest);
 
         // then
         Assertions.assertThat(result).isFalse();
@@ -55,9 +57,10 @@ public class CheckLoginTest {
         // given
         User userToTest = new User();
         userToTest.setLogin("Marcin");
+        DataBase dataBase = new DataBase();
 
         // when
-        boolean result = underTest.checkName(userToTest);
+        boolean result = underTest.checkName(dataBase, userToTest);
 
         // then
         Assertions.assertThat(result).isTrue();

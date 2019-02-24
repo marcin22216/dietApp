@@ -32,8 +32,10 @@ public class AddSexController {
 
         loggedUser.setSex(userSex.getSex());
 
-        String sex = userSex.getSex();
+        String sex = loggedUser.getSex();
         model.addAttribute("sex", sex);
+
+
         return "personalData/confirmAdd";
     }
 

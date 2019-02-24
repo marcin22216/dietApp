@@ -8,11 +8,12 @@ public class FindOnlineUser {
 
     public User findUser(DataBase dataBase)
     {
-        for (int i=0; i<dataBase.getUserList().size(); i++)
+        for (User user : dataBase.getUserList())
+
         {
-            if (dataBase.getUserList().get(i).isLogged())
+            if (user.isLogged())
             {
-                return  dataBase.getUserList().get(i);
+                return  user;
             }
             else
             {

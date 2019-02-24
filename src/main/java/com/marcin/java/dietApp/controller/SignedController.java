@@ -33,13 +33,14 @@ public class SignedController {
     @PostMapping("/adding")
     public String adding(Model model, User userPersonal)
     {
-        addName.addName(dataBase, userPersonal);
-        addSurname.addSurname(dataBase, userPersonal);
+        User loggedUser = findOnlineUser.findUser(dataBase);
+        loggedUser.setName(userPersonal.getName());
+        loggedUser.setSurname(userPersonal.getSurname());
 
         findOnlineUser.findUser(dataBase);
-            String name = userPersonal.getName();
+            String name = loggedUser.getName();
             model.addAttribute("name", name);
-            String surname = userPersonal.getSurname();
+            String surname = loggedUser.getSurname();
             model.addAttribute("surname", surname);
         return "personalData/confirmAdd";
     }

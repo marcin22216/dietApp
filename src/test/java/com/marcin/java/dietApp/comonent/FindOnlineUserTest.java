@@ -14,6 +14,14 @@ public class FindOnlineUserTest {
 
     private FindOnlineUser underTest;
 
+    private User createUser(String login, boolean isLogged)
+    {
+        User loggedUser = new User();
+        loggedUser.setLogged(isLogged);
+        loggedUser.setLogin(login);
+        return loggedUser;
+    }
+
     @Before
     public void setUp() {
         this.underTest = new FindOnlineUser();
@@ -22,22 +30,30 @@ public class FindOnlineUserTest {
     @Test
     public void shouldReturnUserWhenIsLog() {
         //given
-        List<User> listToTest;
-        listToTest = new ArrayList<>();
-        User userToTest = new User();
-        User userToTest2 = new User();
-        DataBase dataBaseTest = new DataBase();
-        userToTest.setLogged(true);
-        userToTest2.setLogged(false);
-        listToTest.add(userToTest);
-        listToTest.add(userToTest2);
-        dataBaseTest.setUserList(listToTest);
+//        List<User> listToTest;
+//        listToTest = new ArrayList<>();
+//        User userToTest = new User();
+//        User userToTest2 = new User();
+//        DataBase dataBaseTest = new DataBase();
+//        userToTest.setLogged(true);
+//        userToTest2.setLogged(false);
+//        listToTest.add(userToTest);
+//        listToTest.add(userToTest2);
+//        dataBaseTest.setUserList(listToTest);
+        List<User> userList = new ArrayList<>();
+        userList.add(createUser("marcin", true));
+        userList.add(createUser("szymon", false));
+        userList.add(createUser("pawel", false));
+        userList.add(createUser("tomek", false));
+
+        DataBase dataBase = new DataBase();
+        dataBase.setUserList(userList);
 
         //when
-        User result = underTest.findUser(dataBaseTest);
+        User result = underTest.findUser(dataBase);
 
         //then
-        Assertions.assertThat(result).isEqualTo(userToTest);
+        Assertions.assertThat(result.getLogin()).isEqualTo("marcin");
     }
 
     @Test

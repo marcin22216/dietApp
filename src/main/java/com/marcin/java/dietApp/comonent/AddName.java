@@ -7,11 +7,11 @@ import org.springframework.stereotype.Component;
 public class AddName {
     public void addName(DataBase dataBase, User user)
     {
-        for (int i=0; i<dataBase.getUserList().size(); i++)
+        for (User user1 : dataBase.getUserList())
         {
-            if (dataBase.getUserList().get(i).isLogged())
+            if (user1.isLogged())
             {
-                dataBase.getUserList().get(i).setName(user.getName());
+                user1.setName(user.getName());
             }
         }
     }
