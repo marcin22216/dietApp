@@ -1,6 +1,7 @@
 package com.marcin.java.dietApp.controller;
 
 import com.marcin.java.dietApp.bean.User;
+import com.marcin.java.dietApp.comonent.AnalysisBMI;
 import com.marcin.java.dietApp.comonent.DataBase;
 import com.marcin.java.dietApp.comonent.FindOnlineUser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +15,15 @@ public class AnalysisBmiController {
     private FindOnlineUser findOnlineUser;
     @Autowired
     private DataBase dataBase;
+    @Autowired
+    private AnalysisBMI analysisBMI;
 
     @GetMapping("/analysisBmi")
-    public String analysisBMI(Model model, User user)
+    public String analysisBMI(Model model)
     {
         User loggerUser = findOnlineUser.findUser(dataBase);
-        return "";
+        analysisBMI.analyzingBmi(loggerUser);
+        return "BMI/analyzedBmi";
     }
 
 }
